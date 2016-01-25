@@ -1,0 +1,23 @@
+{
+  "name": "caloriecounter",
+  "version": "1.0.0",
+  "description": "Greenfox Academy project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KoDa505/Calorie-counter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KoDa505/Calorie-counter/issues"
+  },
+  "homepage": "https://github.com/KoDa505/Calorie-counter#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "mysql": "^2.10.2"
+  }
+}
