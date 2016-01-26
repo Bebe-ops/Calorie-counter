@@ -1,16 +1,28 @@
 'use strict';
 
+
+
 var elements = require('./elements.js');
 var express = require('express');
+var bodyParser = require("body-parser");
 
 var app = express();
 
 app.use(express.static("public"));
+app.use(bodyParser.json());
 
 
-app.get("/meals", function (req, res) {
+app.get('/meals', function (req, res) {
   elements.all(function(result){
     res.json(result);
+  });
+});
+
+app.post('/meals', function(req, res) {
+  console.log(req.body);
+  elements.add(req.body, function(result) {
+    res.json(result);
+    console.log(result);
   });
 });
 

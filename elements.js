@@ -11,13 +11,23 @@ var connection = mysql.createConnection({
 connection.connect();
 
 
-function allItems(callback) {
+function allElements(callback) {
   connection.query('SELECT * FROM meals', function(err, result) {
     if (err) throw err;
     callback(result);
   });
 }
 
+function addElement(mealProperties, callback) {
+  connection.query('INSERT INTO meals SET ?', mealProperties, function(err, result) {
+    if (err) throw err;
+    console.log("sikerult");
+    callback(result);
+  })
+}
+
+
 module.exports = {
-  all: allItems,
+  all: allElements,
+  add: addElement
 };

@@ -6,15 +6,12 @@
   </head>
   <body>
     <h1 class = "main-title">Calorie Counter</h1>
-    <form class="" action="index.html" method="post">
-      Meal:<br>
-      <input type="text" name="mealname"><br>
-      Calorie:<br>
-      <input type="integer" name="lastname"><br>
-      Date:<br>
-      <input type="text" name="lastname"><br><br>
-      <input type="submit" value="Submit"><br>
-    </form>
+    <div class="meal-entry">
+      <input class = "meal-name" name="meal-name">
+      <input class = "meal-calorie" name="meal-calorie">
+      <input class ="meal-date" type="datetime-local" name="meal-date">
+    </div>
+    <button class = "submit-button" type="button" name="button">Submit</button>
     <div class="meal-list">Meals</div>
 
     <script src = "main.js" type="text/javascript">
