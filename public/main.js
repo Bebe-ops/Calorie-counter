@@ -20,7 +20,11 @@ function getRequest(callback) {
 
 function listing(response) {
   var mealsArray = JSON.parse(response);
-  mealsArray = document.createElement('p');
+  for (var i = 0; i < mealsArray.length; i ++) {
+    var listelement = document.createElement('p');
+    listelement.innerHTML = mealsArray[i].name + '    ' + mealsArray[i].calorie;
+    listOfMeals.appendChild(listelement);
+  }
   console.log("sikerult a listazas", response);
 }
 
