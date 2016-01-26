@@ -11,9 +11,13 @@ var connection = mysql.createConnection({
 connection.connect();
 
 
-function allItems(cb) {
-  connection.query('SELECT * FROM todo', function(err, result) {
+function allItems(callback) {
+  connection.query('SELECT * FROM meals', function(err, result) {
     if (err) throw err;
-    cb(result);
+    callback(result);
   });
 }
+
+module.exports = {
+  all: allItems,
+};
