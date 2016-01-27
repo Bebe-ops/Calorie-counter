@@ -14,9 +14,9 @@ var filterInput = document.querySelector('.filter-input');
 var filterButton = document.querySelector('.filter-button');
 var elementId = 0;
 
-function getRequest(callback) {
+function getRequest(addition, callback) {
   var myRequest = new XMLHttpRequest();
-  myRequest.open('GET',url + '/meals');
+  myRequest.open('GET',url + addition);
   myRequest.setRequestHeader('Content-Type', 'application/json');
   myRequest.send();
   myRequest.onreadystatechange = function() {
