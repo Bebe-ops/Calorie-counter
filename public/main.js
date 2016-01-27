@@ -9,6 +9,7 @@ var mealName = document.querySelector('.meal-name');
 var mealCalorie = document.querySelector('.meal-calorie');
 var mealDate = document.querySelector('.meal-date');
 var submitButton = document.querySelector('.submit-button');
+var deleteButton = document.querySelector('.delete-button')
 var elementId = 0;
 
 function getRequest(callback) {
@@ -30,6 +31,17 @@ function postRequest(data) {
   myRequest.send(data);
 }
 
+function deleteRequest(id, callback) {
+  var myRequest = new XMLHttpRequest();
+  myRequest.open('DELETE', url + '/meals/' + id);
+  myRequest.setRequestHeader('Content-Type', 'application/json');
+  myRequest.send();
+  myRequest.onreadystatechange = function () {
+    if (myRequest.readyState === 4) {
+      callback(id);
+    }
+  }
+}
 
 function listing(response) {
   var mealsArray = JSON.parse(response);
@@ -43,13 +55,22 @@ function listing(response) {
   console.log('sikerult a listazas', response);
 }
 
+function removeElement(id) {
+  var element = document.getElementById(id);
+  element.parentNode.removeChild(element);
+}
 
 submitButton.addEventListener('click', function() {
   postRequest(JSON.stringify({name: mealName.value, calorie: mealCalorie.value, date: mealDate.value}))
   getRequest(listing);
 });
 
-
-
-
 getRequest(listing);
+
+listOfMeals.addEventListener('click', function() {
+  elementId = event.target.id;
+});
+
+deleteButton.addEventListener('click', function() {
+  deleteRequest(elementId, removeElement);
+});
