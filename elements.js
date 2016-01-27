@@ -18,10 +18,10 @@ function allElements(callback) {
   });
 }
 
+
 function addElement(mealProperties, callback) {
   connection.query('INSERT INTO meals SET ?', mealProperties, function(err, result) {
     if (err) throw err;
-    console.log("sikerult");
     callback(result);
   })
 }
@@ -37,5 +37,6 @@ function removeElement(id, callback) {
 module.exports = {
   all: allElements,
   add: addElement,
-  remove: removeElement
+  remove: removeElement,
+  select: selectElements
 };

@@ -9,7 +9,9 @@ var mealName = document.querySelector('.meal-name');
 var mealCalorie = document.querySelector('.meal-calorie');
 var mealDate = document.querySelector('.meal-date');
 var submitButton = document.querySelector('.submit-button');
-var deleteButton = document.querySelector('.delete-button')
+var deleteButton = document.querySelector('.delete-button');
+var filterInput = document.querySelector('.filter-input');
+var filterButton = document.querySelector('.filter-button');
 var elementId = 0;
 
 function getRequest(callback) {
@@ -48,17 +50,33 @@ function listing(response) {
   listOfMeals.innerHTML = '';
   mealsArray.forEach(function(onemeal) {
     var listelement = document.createElement('p');
-    listelement.innerHTML = onemeal.name + '    ' + onemeal.calorie;
+    listelement.innerHTML = onemeal.name + '    ' + onemeal.calorie + '   ' + onemeal.date.split('T')[0];
     listelement.setAttribute('id', onemeal.id);
     listOfMeals.appendChild(listelement);
   });
   console.log('sikerult a listazas', response);
 }
 
+
+function listFiltered(response) {
+  var mealsArray = JSON.parse(response);
+  listOfMeals.innerHTML = '';
+  mealsArray.forEach(function(onemeal) {
+    if (filterInput.value === onemeal.date.split('T')[0]) {
+      var listelement = document.createElement('p');
+      listelement.innerHTML = onemeal.name + '    ' + onemeal.calorie;
+      listelement.setAttribute('id', onemeal.id);
+      listOfMeals.appendChild(listelement);
+    }
+  });
+  console.log('listFiltered eredmenye', response);
+}
+
 function removeElement(id) {
   var element = document.getElementById(id);
   element.parentNode.removeChild(element);
 }
+
 
 submitButton.addEventListener('click', function() {
   postRequest(JSON.stringify({name: mealName.value, calorie: mealCalorie.value, date: mealDate.value}))
@@ -73,4 +91,9 @@ listOfMeals.addEventListener('click', function() {
 
 deleteButton.addEventListener('click', function() {
   deleteRequest(elementId, removeElement);
+});
+
+filterButton.addEventListener('click', function() {
+  getRequest(listFiltered);
+  console.log(filterInput.value);
 });
