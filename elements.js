@@ -11,8 +11,8 @@ var connection = mysql.createConnection({
 connection.connect();
 
 
-function allElements(callback) {
-  connection.query('SELECT * FROM meals', function(err, result) {
+function allElements(addition, callback) {
+  connection.query('SELECT * FROM ' + addition, function(err, result) {
     if (err) throw err;
     callback(result);
   });
