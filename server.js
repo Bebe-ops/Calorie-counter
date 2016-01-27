@@ -13,10 +13,17 @@ app.use(bodyParser.json());
 
 
 app.get('/meals', function (req, res) {
-  elements.all(function(result){
+  elements.all('meals', function(result){
     res.json(result);
   });
 });
+
+app.get('/calorie', function(req, res) {
+  elements.all('calorie', function(result) {
+    res.json(result);
+  });
+});
+
 
 app.post('/meals', function(req, res) {
   console.log(req.body);
