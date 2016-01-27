@@ -19,6 +19,8 @@ function allElements(addition, callback) {
 }
 
 
+
+
 function addElement(mealProperties, callback) {
   connection.query('INSERT INTO meals SET ?', mealProperties, function(err, result) {
     if (err) throw err;
@@ -37,6 +39,5 @@ function removeElement(id, callback) {
 module.exports = {
   all: allElements,
   add: addElement,
-  remove: removeElement,
-  select: selectElements
+  remove: removeElement
 };
