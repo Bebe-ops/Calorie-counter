@@ -12,6 +12,7 @@ var submitButton = document.querySelector('.submit-button');
 var deleteButton = document.querySelector('.delete-button');
 var filterInput = document.querySelector('.filter-input');
 var filterButton = document.querySelector('.filter-button');
+var calorieDatabase = document.querySelector('.calorie-database');
 var elementId = 0;
 
 function getRequest(addition, callback) {
@@ -72,18 +73,31 @@ function listFiltered(response) {
   console.log('listFiltered eredmenye', response);
 }
 
+function calorieSelection(response) {
+  var mealsArray = JSON.parse(response);
+  mealsArray.forEach(function(onemeal) {
+    var listelement = document.createElement('option');
+    listelement.innerHTML = onemeal.Item;
+    // listelement.setAttribute('id', onemeal.id);
+    calorieDatabase.appendChild(listelement);
+  });
+  console.log('calorieSelection eredmenye', response);
+}
+
+
+
 function removeElement(id) {
   var element = document.getElementById(id);
   element.parentNode.removeChild(element);
 }
-
 
 submitButton.addEventListener('click', function() {
   postRequest(JSON.stringify({name: mealName.value, calorie: mealCalorie.value, date: mealDate.value}))
   getRequest(listing);
 });
 
-getRequest(listing);
+getRequest('/meals', listing);
+getRequest('/calorie', calorieSelection);
 
 listOfMeals.addEventListener('click', function() {
   elementId = event.target.id;
