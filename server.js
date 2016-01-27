@@ -26,6 +26,11 @@ app.post('/meals', function(req, res) {
   });
 });
 
+app.delete("/meals/:id", function (req, res) {
+  elements.remove(req.params.id, function(result) {
+    res.json(result);
+  });
+});
 
 app.listen(3000, function() {
   console.log('I am listening on port 3000...')

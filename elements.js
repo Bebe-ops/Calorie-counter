@@ -26,8 +26,16 @@ function addElement(mealProperties, callback) {
   })
 }
 
+function removeElement(id, callback) {
+  connection.query('DELETE FROM meals WHERE id = ?', id, function(err, result) {
+    if (err) throw err;
+    callback(result);
+  });
+}
+
 
 module.exports = {
   all: allElements,
-  add: addElement
+  add: addElement,
+  remove: removeElement
 };
