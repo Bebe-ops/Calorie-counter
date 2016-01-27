@@ -8,7 +8,8 @@ var mealEntry = document.querySelector('.meal-entry');
 var mealName = document.querySelector('.meal-name');
 var mealCalorie = document.querySelector('.meal-calorie');
 var mealDate = document.querySelector('.meal-date');
-var submitButton = document.querySelector('.submit-button')
+var submitButton = document.querySelector('.submit-button');
+var elementId = 0;
 
 function getRequest(callback) {
   var myRequest = new XMLHttpRequest();
@@ -29,15 +30,17 @@ function postRequest(data) {
   myRequest.send(data);
 }
 
+
 function listing(response) {
   var mealsArray = JSON.parse(response);
   listOfMeals.innerHTML = '';
-  for (var i = 0; i < mealsArray.length; i ++) {
+  mealsArray.forEach(function(onemeal) {
     var listelement = document.createElement('p');
-    listelement.innerHTML = mealsArray[i].name + '    ' + mealsArray[i].calorie;
+    listelement.innerHTML = onemeal.name + '    ' + onemeal.calorie;
+    listelement.setAttribute('id', onemeal.id);
     listOfMeals.appendChild(listelement);
-  }
-  console.log("sikerult a listazas", response);
+  });
+  console.log('sikerult a listazas', response);
 }
 
 
@@ -45,5 +48,8 @@ submitButton.addEventListener('click', function() {
   postRequest(JSON.stringify({name: mealName.value, calorie: mealCalorie.value, date: mealDate.value}))
   getRequest(listing);
 });
+
+
+
 
 getRequest(listing);
