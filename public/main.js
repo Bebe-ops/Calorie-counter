@@ -12,7 +12,10 @@ var submitButton = document.querySelector('.submit-button');
 var deleteButton = document.querySelector('.delete-button');
 var filterInput = document.querySelector('.filter-input');
 var filterButton = document.querySelector('.filter-button');
-var calorieDatabase = document.querySelector('.calorie-database');
+var calorieDatabaseMeals = document.querySelector('.calorie-database-meals');
+var calorieDatabaseCalories = document.querySelector('.calorie-database-calories');
+var calorieDatabaseMetrics = document.querySelector('.calorie-database-metrics');
+var mealDatabase = {};
 var elementId = 0;
 
 function getRequest(addition, callback) {
@@ -73,15 +76,17 @@ function listFiltered(response) {
   console.log('listFiltered eredmenye', response);
 }
 
+
 function calorieSelection(response) {
   var mealsArray = JSON.parse(response);
+  mealDatabase = mealsArray;
   mealsArray.forEach(function(onemeal) {
     var listelement = document.createElement('option');
     listelement.innerHTML = onemeal.Item;
-    // listelement.setAttribute('id', onemeal.id);
-    calorieDatabase.appendChild(listelement);
+    listelement.setAttribute('id', onemeal.ID);
+    calorieDatabaseMeals.appendChild(listelement);
   });
-  console.log('calorieSelection eredmenye', response);
+  // console.log('calorieSelection eredmenye', response);
 }
 
 
@@ -110,4 +115,13 @@ deleteButton.addEventListener('click', function() {
 filterButton.addEventListener('click', function() {
   getRequest(listFiltered);
   console.log(filterInput.value);
+});
+
+calorieDatabaseMeals.addEventListener('click', function() {
+  mealDatabase.forEach(function(onemeal) {
+    if (calorieDatabaseMeals.value === onemeal.Item) {
+      calorieDatabaseMetrics.value = onemeal.Quantity + '  ' + onemeal.Metrics;
+      calorieDatabaseCalories.value = onemeal.Calories;
+    }
+  });
 });
