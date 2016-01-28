@@ -30,11 +30,16 @@ function getRequest(addition, callback) {
   }
 }
 
-function postRequest(data) {
+function postRequest(data, callback) {
   var myRequest = new XMLHttpRequest();
   myRequest.open('POST', url + '/meals');
   myRequest.setRequestHeader('Content-Type', 'application/json');
   myRequest.send(data);
+  myRequest.onreadystatechange = function () {
+    if (myRequest.readyState === 4 && callback !== undefined) {
+      callback(myRequest.responseText);
+    }
+  };
 }
 
 function deleteRequest(id, callback) {
