@@ -15,6 +15,7 @@ var filterButton = document.querySelector('.filter-button');
 var calorieDatabaseMeals = document.querySelector('.calorie-database-meals');
 var calorieDatabaseCalories = document.querySelector('.calorie-database-calories');
 var calorieDatabaseMetrics = document.querySelector('.calorie-database-metrics');
+var addButton = document.querySelector('.add-button')
 var mealDatabase = {};
 var elementId = 0;
 
@@ -112,11 +113,21 @@ submitButton.addEventListener('click', function() {
   })
 });
 
+addButton.addEventListener('click', function() {
+  postRequest(
+    JSON.stringify({
+      name: mealName.value,
+      calorie: mealCalorie.value,
+      date: mealDate.value}))
+  getRequest('/meals', listing);
+});
+
 getRequest('/meals', listing);
 getRequest('/calorie', calorieSelection);
 
 listOfMeals.addEventListener('click', function() {
   elementId = event.target.id;
+  console.log(event.target.id);
 });
 
 deleteButton.addEventListener('click', function() {
