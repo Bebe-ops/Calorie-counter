@@ -102,8 +102,15 @@ function removeElement(id) {
 }
 
 submitButton.addEventListener('click', function() {
-  postRequest(JSON.stringify({name: mealName.value, calorie: mealCalorie.value, date: mealDate.value}))
-  getRequest(listing);
+  postRequest(
+    JSON.stringify({
+      name: calorieDatabaseMeals.value,
+      calorie: calorieDatabaseCalories.value,
+      date: mealDate.value
+    }),
+    function () {
+      getRequest('/meals', listing);
+  })
 });
 
 getRequest('/meals', listing);
