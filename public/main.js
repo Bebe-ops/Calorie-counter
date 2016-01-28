@@ -88,7 +88,6 @@ function calorieSelection(response) {
   mealsArray.forEach(function(onemeal) {
     var listelement = document.createElement('option');
     listelement.innerHTML = onemeal.Item;
-    listelement.setAttribute('id', onemeal.ID);
     calorieDatabaseMeals.appendChild(listelement);
   });
   // console.log('calorieSelection eredmenye', response);
