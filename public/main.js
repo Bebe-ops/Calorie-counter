@@ -126,8 +126,7 @@ getRequest('/meals', listing);
 getRequest('/calorie', calorieSelection);
 
 listOfMeals.addEventListener('click', function() {
-  elementId = event.target.id;
-  console.log(event.target.id);
+  elementId = event.target.parentElement.id;
 });
 
 deleteButton.addEventListener('click', function() {
