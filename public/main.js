@@ -59,8 +59,8 @@ function listing(response) {
   var mealsArray = JSON.parse(response);
   listOfMeals.innerHTML = '';
   mealsArray.forEach(function(onemeal) {
-    var listelement = document.createElement('p');
-    listelement.innerHTML = onemeal.name + '    ' + onemeal.calorie + '   ' + onemeal.date.split('T')[0];
+    var listelement = document.createElement('tr');
+    listelement.innerHTML = '<td>' + onemeal.name + '</td><td>' + onemeal.calorie + '</td><td>' + onemeal.date.split('T')[0] + '</td>';
     listelement.setAttribute('id', onemeal.id);
     listOfMeals.appendChild(listelement);
   });
