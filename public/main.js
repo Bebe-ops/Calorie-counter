@@ -135,7 +135,7 @@ deleteButton.addEventListener('click', function() {
 });
 
 filterButton.addEventListener('click', function() {
-  getRequest(listFiltered);
+  getRequest('/meals', listFiltered);
   console.log(filterInput.value);
 });
 
