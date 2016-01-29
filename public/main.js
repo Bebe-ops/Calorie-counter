@@ -73,8 +73,8 @@ function listFiltered(response) {
   listOfMeals.innerHTML = '';
   mealsArray.forEach(function(onemeal) {
     if (filterInput.value === onemeal.date.split('T')[0]) {
-      var listelement = document.createElement('p');
-      listelement.innerHTML = onemeal.name + '    ' + onemeal.calorie;
+      var listelement = document.createElement('tr');
+      listelement.innerHTML = '<td>' + onemeal.name + '</td><td>' + onemeal.calorie + '</td><td>';
       listelement.setAttribute('id', onemeal.id);
       listOfMeals.appendChild(listelement);
     }
