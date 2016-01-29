@@ -1,39 +1,12 @@
-article,
-aside,
-figure,
-footer,
-header,
-main,
-menu,
-nav,
-section,
-summary {
-  display: block;
-}
-
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
-button,
-input,
-select,
-textarea {
-  color: inherit; /* 1 */
-  font: inherit; /* 2 */
-  margin: 0; /* 3 */
-}
-
-
-button {
-  overflow: visible;
+body {
+  /*background-image: url(http://kaboompics.com/files/upload/o_19qql4qpicbiut1cm818vi1sj17_new.jpg);*/
+  background-image:url('cup.jpg');
+  background-size: cover;
 }
 
 
 
-
-.pure-button {
+.btn {
     /* Structure */
     display: inline-block;
     zoom: 1;
@@ -54,68 +27,22 @@ button {
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     font-size: 110%;
+    background: rgb(240, 120, 45);
+
+
 }
 
-.button-secondary {
+/*.btn-submit {
             background: rgb(28, 184, 65);
 }
-.button-error {
+.btn-delete {
             background: rgb(202, 60, 60);
         }
 
-.button-warning {
-            background: rgb(223, 117, 20);
+.btn-filter {
+            background: rgb(200, 120, 45);
         }
 
-.button-filter {
-            background: rgb(66, 184, 221);
-        }
-
-.pure-form input[type="text"],
-.pure-form input[type="date"],
-.pure-form select,
-.pure-form textarea {
-    padding: 0.5em 0.6em;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-shadow: inset 0 1px 3px #ddd;
-    border-radius: 4px;
-    vertical-align: middle;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.pure-form input:not([type]) {
-    padding: 0.5em 0.6em;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-shadow: inset 0 1px 3px #ddd;
-    border-radius: 4px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.pure-form-aligned input,
-.pure-form-aligned textarea,
-.pure-form-aligned select {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    vertical-align: middle;
-}
-
-.pure-form-aligned .pure-control-group {
-    margin-bottom: 0.5em;
-}
-.pure-form-aligned .pure-control-group label {
-    text-align: right;
-    display: inline-block;
-    vertical-align: middle;
-    width: 10em;
-    margin: 0 1em 0 0;
-}
-.pure-form-aligned .pure-controls {
-    margin: 1.5em 0 0 11em;
-}
+.btn-add {
+            background: rgb(66, 184, 221);*/
+        /*}*/
